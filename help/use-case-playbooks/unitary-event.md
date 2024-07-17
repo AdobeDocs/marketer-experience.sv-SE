@@ -1,10 +1,10 @@
 ---
 title: Unitary-händelse
-description: Det här är en instruktionssida för att simulera[!UICONTROL Unitary event]Typ av resans validering.
+description: Det här är en instruktionssida för att simulera typen [!UICONTROL Unitary event] för resevalidering.
 exl-id: 314f967c-e10f-4832-bdba-901424dc2eeb
 source-git-commit: 194667c26ed002be166ab91cc778594dc1f09238
 workflow-type: tm+mt
-source-wordcount: '878'
+source-wordcount: '828'
 ht-degree: 0%
 
 ---
@@ -20,13 +20,13 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->Instruktionerna kan ändras **[!UICONTROL Playbook]** se till att alltid referera till datautsnittet Sample i respektive **[!UICONTROL Playbook]**.
+>Instruktionerna kan ändras över **[!UICONTROL Playbook]**, så referera alltid till exempeldataavsnittet i respektive **[!UICONTROL Playbook]**.
 
 ## Förutsättning
 
 * Använd Playbook för att skapa instanser som **[!UICONTROL Journey]**, **[!UICONTROL Schemas]**, **[!UICONTROL Segments]**, **[!UICONTROL Messages]** osv.
 
-* Skapade resurser visas på `Bill Of Material` Sida
+* Skapade resurser visas på sidan `Bill Of Material`
 
 <!-- TODO: attached image needs to change once postman is removed from UI -->
 ![Produktstruktursida](../assets/bom-page.png)
@@ -34,7 +34,7 @@ ht-degree: 0%
 >[!TIP]
 >
 >Om du använder en terminal för att köra kurvorna kan du ange variabelvärden innan du kör kurvorna, så att du inte behöver ersätta dessa värden i enskilda kurvor.
->Till exempel: Om du anger `ORG_ID=************@AdobeOrg`, kommer skal automatiskt att ersätta alla förekomster av `$ORG_ID` med värdet, så att du kan kopiera, klistra in och köra kurvorna nedan utan att ändra något.
+>Om du till exempel anger `ORG_ID=************@AdobeOrg` ersätts alla förekomster av `$ORG_ID` automatiskt med värdet, så att du kan kopiera, klistra in och köra rullarna nedan utan att några ändringar görs.
 >
 > Följande variabler används i hela dokumentet
 >
@@ -90,19 +90,19 @@ ht-degree: 0%
 
 ## Hämta IMS-token
 
-1. Följ [Autentisera och få åtkomst till Experience Platform API:er](https://experienceleague.adobe.com/docs/experience-platform/landing/platform-apis/api-authentication.html) dokumentation för att generera åtkomsttoken.
+1. Följ dokumentationen för [Autentisera och få åtkomst till Experience Platform API:er](https://experienceleague.adobe.com/docs/experience-platform/landing/platform-apis/api-authentication.html) för att generera åtkomsttoken.
 
-## Publicera den resa som skapats av Playbook
+## Publish den resa som skapats av Playbook
 
 Det finns två sätt att publicera resan. Du kan välja något av dem:
 
-1. **Använda AJO-gränssnittet** - klicka på länken Resa på `Bill Of Material Page`; den här dirigerar om dig till sidan Journey där du kan klicka på **[!UICONTROL Publish]** och Journey skulle publiceras.
+1. **Använd AJO-gränssnittet** - klicka på länken Resa på `Bill Of Material Page`. Detta dirigerar om dig till sidan Resa där du kan klicka på knappen **[!UICONTROL Publish]** så publiceras resan.
 
    ![Reseobjekt](../assets/journey-object.png)
 
-1. **Använda cURL**
+1. **Använder cURL**
 
-   1. Publicera resan. Svaret innehåller det jobb-ID som behövs i nästa steg för att hämta resepubliceringsstatus.
+   1. Publish resan. Svaret innehåller det jobb-ID som behövs i nästa steg för att hämta resepubliceringsstatus.
 
       ```bash
       curl --location --request POST "https://journey-private.adobe.io/authoring/jobs/journeyVersions/$JOURNEY_ID/deploy" \
@@ -114,7 +114,7 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
       --header "Content-Type: application/json" 
       ```
 
-   1. Det kan ta en stund att publicera på resan, så för att kontrollera statusen körs under cURL, tills `response.status` är `SUCCESS`ska du vänta i 10-15 sekunder om det tar tid att publicera resan.
+   1. Det kan ta en stund att publicera på resan, så för att kontrollera status som körs under cURL, tills `response.status` är `SUCCESS`, måste du vänta i 10-15 sekunder om det tar tid att publicera på resan.
 
       ```bash
       curl --location "https://journey-private.adobe.io/authoring/jobs/$JOB_ID" \
@@ -129,7 +129,7 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
 
 >[!TIP]
 >
->Om din e-postleverantör stöder plus e-post kan du återanvända samma e-postadress genom att lägga till `+<variable>` i e-postmeddelandet, t.ex. `usertest@email.com` kan återupptas som `usertest+v1@email.com` eller `usertest+24jul@email.com`. Det är praktiskt att ha en ny profil varje gång, men ändå använda samma e-post-id.
+>Om din e-postleverantör stöder plus-e-post kan du återanvända samma e-postadress genom att lägga till `+<variable>` i din e-postadress. `usertest@email.com` kan t.ex. återanvändas som `usertest+v1@email.com` eller `usertest+24jul@email.com`. Det är praktiskt att ha en ny profil varje gång, men ändå använda samma e-post-id.
 >
 >P.S: Plus-e-post är en konfigurerbar funktion som måste stödjas av e-postleverantörer. Kontrollera om du kan ta emot e-post om sådana adresser innan du använder dem i test.
 
@@ -166,7 +166,7 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
    }'
    ```
 
-   Svaret kommer att ha formatet `"@/dataSets/<PROFILE_DATASET_ID>"`.
+   Svaret har formatet `"@/dataSets/<PROFILE_DATASET_ID>"`.
 
 1. Skapa **[!DNL HTTP Streaming Inlet Connection]** med hjälp av följande steg.
    1. Skapa en basanslutning.
@@ -194,7 +194,7 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
       }'
       ```
 
-      Hämta ett anslutnings-ID från svaret och använd det i stället för `PROFILE_BASE_CONNECTION_ID` i följande cURL:er
+      Hämta ett basanslutnings-ID från svaret och använd det i stället för `PROFILE_BASE_CONNECTION_ID` i följande cURL:er
 
    1. Skapa källanslutning.
 
@@ -286,17 +286,17 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
       --header "x-api-key: $API_KEY"
       ```
 
-      Hämta inletUrl från svaret och använd den i stället för `PROFILE_INLET_URL`
+      Hämta inletUrl från svaret och använd det i stället för `PROFILE_INLET_URL`
 
-1. I det här steget måste användaren ha värden för `PROFILE_DATASET_ID` och `PROFILE_INLET_URL`; om inte, se steg `3` eller `4` respektive.
-1. Användaren måste ersätta `CUSTOMER_MOBILE_NUMBER`, `CUSTOMER_FIRST_NAME`, `CUSTOMER_LAST_NAME` och `EMAIL` in below cURLs.
+1. I det här steget måste användaren ha värdena `PROFILE_DATASET_ID` och `PROFILE_INLET_URL`. Om inte, se steg `3` respektive `4`.
+1. Användaren måste ersätta `CUSTOMER_MOBILE_NUMBER`, `CUSTOMER_FIRST_NAME`, `CUSTOMER_LAST_NAME` och `EMAIL` under cURL:er för att kunna importera kunden.
 
    1. `CUSTOMER_MOBILE_NUMBER` skulle vara mobilnummer, t.ex. `+1 000-000-0000`
    1. `CUSTOMER_FIRST_NAME` skulle vara användarens förnamn
    1. `CUSTOMER_LAST_NAME` skulle vara användarens efternamn
-   1. `EMAIL` är användarens e-postadress, vilket är avgörande för att kunna använda ett distinkt e-post-ID så att en ny profil kan hämtas.
+   1. `EMAIL` skulle vara användarens e-postadress. Detta är viktigt att använda distinkt e-post-ID så att en ny profil kan hämtas.
 
-1. Kör sedan kontrollen för att importera kundprofil. Uppdatera `body.xdmEntity.consents.marketing.preferred` till `email`, `sms`, eller `push` baserat på de kanaler ni tänker verifiera. Ange även motsvarande `val` till `y`.
+1. Kör sedan kontrollen för att importera kundprofil. Uppdatera `body.xdmEntity.consents.marketing.preferred` till `email`, `sms` eller `push` baserat på de kanaler som du tänker verifiera. Ange även motsvarande `val` till `y`.
 
    ```bash
    curl --location "$PROFILE_INLET_URL?synchronousValidation=true" \
@@ -389,9 +389,9 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
    }'
    ```
 
-   Svaret kommer att ha formatet `"@/dataSets/<EVENT_DATASET_ID>"`
+   Svaret har formatet `"@/dataSets/<EVENT_DATASET_ID>"`
 
-1. Skapa **[!DNL HTTP Streaming Inlet Connection for events]**  med hjälp av följande steg.
+1. Skapa **[!DNL HTTP Streaming Inlet Connection for events]** med hjälp av följande steg.
    <!-- TODO: Is the name unique? If so, we may need to generate and provide in variables.txt-->
    1. Skapa en basanslutning.
 
@@ -418,7 +418,7 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
       }'
       ```
 
-      Hämta ett anslutnings-ID från svaret och använd det i stället för `EVENT_BASE_CONNECTION_ID`
+      Hämta ett basanslutnings-ID från svaret och använd det i stället för `EVENT_BASE_CONNECTION_ID`
 
    1. Skapa källanslutning.
 
@@ -510,13 +510,13 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
        --header "Content-Type: application/json" 
    ```
 
-   Hämta inletUrl från svaret och använd den i stället för `EVENT_INLET_URL`
+   Hämta inletUrl från svaret och använd det i stället för `EVENT_INLET_URL`
 
-1. I det här steget måste användaren ha värden för `EVENT_DATASET_ID` och `EVENT_INLET_URL`; om inte, se steg `3` eller `4` respektive.
-1. Användaren måste ändra tidsvariabeln för att kunna importera händelsen `TIMESTAMP` i begärandetexten för cURL nedan.
+1. I det här steget måste användaren ha värdena `EVENT_DATASET_ID` och `EVENT_INLET_URL`. Om inte, se steg `3` respektive `4`.
+1. Användaren måste ändra tidsvariabeln `TIMESTAMP` i begärandetexten för cURL nedan för att kunna importera händelsen.
 
-   1. Ersätt `body.xdmEntity` med innehåll från nedladdad event json.
-   1. `TIMESTAMP` skulle tidpunkten för händelseförekomstens förekomst, använda tidsstämpeln i UTC-tidszon, t.ex. `2023-09-05T23:57:00.071+00:00`.
+   1. Ersätt `body.xdmEntity` med innehållet i hämtad händelse-json.
+   1. `TIMESTAMP` använder tidsstämpeln i UTC-tidszonen, till exempel `2023-09-05T23:57:00.071+00:00`, när en händelse inträffar.
    1. Ange ett unikt värde för variabeln `UNIQUE_EVENT_ID`.
 
    ```bash
@@ -640,17 +640,17 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
 
 ## Slutlig validering
 
-Du måste få ett meddelande om den valda föredragna kanal som används i **[!DNL Ingest the Customer Profile]** steg `8`
+Du måste få ett meddelande om den valda kanal som används i **[!DNL Ingest the Customer Profile]** steg `8`
 
-* `SMS` om önskad kanal är `sms` på `customer_country_code` och `customer_mobile_no`
-* `Email` om önskad kanal är `email` på `email`
+* `SMS` om den önskade kanalen är `sms` på `customer_country_code` och `customer_mobile_no`
+* `Email` om den önskade kanalen är `email` på `email`
 
-Du kan även kontrollera `Journey Report`, för att kontrollera det klickar du på `Journey Object` på `Bill of Materials page` kommer du att omdirigeras till `Journey Details page`.
+Du kan även kontrollera `Journey Report` genom att klicka på `Journey Object` på `Bill of Materials page`. Du omdirigeras då till `Journey Details page`.
 
-För varje publicerad reseanvändare måste en **[!UICONTROL View report]** knapp
-![Journey Report Page](../assets/journey-report-page.png)
+För varje publicerad reseanvändare måste en **[!UICONTROL View report]**-knapp hämtas
+![ Journey Report Page ](../assets/journey-report-page.png)
 
 
 ## Rensa
 
-Använd inte flera instanser `Journey` köra samtidigt, vänligen stoppa resan om den endast är till för validering när valideringen är klar.
+Låt inte flera instanser av `Journey` köras samtidigt. Vänligen stoppa resan om den bara är till för validering när valideringen har slutförts.

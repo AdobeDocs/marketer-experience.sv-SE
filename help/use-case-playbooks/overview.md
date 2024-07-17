@@ -1,13 +1,13 @@
 ---
 title: Använd fallspelningsböcker - översikt
 description: Det här är översiktssidan för Use Case Playbooks.
-source-git-commit: a389631a2baa639496f4168a164aa3461157f5ff
+exl-id: 0e76fc45-cd0c-455c-8edd-353860c1db5e
+source-git-commit: 3f295267af7f21120eef54d07627ac802f2283f9
 workflow-type: tm+mt
 source-wordcount: '21'
 ht-degree: 4%
 
 ---
-
 
 # Översikt
 
