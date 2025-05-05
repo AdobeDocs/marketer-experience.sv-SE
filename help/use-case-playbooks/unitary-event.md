@@ -90,7 +90,7 @@ ht-degree: 0%
 
 ## Hämta IMS-token
 
-1. Följ dokumentationen för [Autentisera och få åtkomst till Experience Platform API:er](https://experienceleague.adobe.com/docs/experience-platform/landing/platform-apis/api-authentication.html) för att generera åtkomsttoken.
+1. Följ dokumentationen för [Autentisera och få åtkomst till Experience Platform API:er](https://experienceleague.adobe.com/docs/experience-platform/landing/platform-apis/api-authentication.html?lang=sv-SE) för att generera åtkomsttoken.
 
 ## Publish den resa som skapats av Playbook
 
@@ -611,12 +611,12 @@ Det finns två sätt att publicera resan. Du kan välja något av dem:
                "timestamp": "'$TIMESTAMP'",
                "web": {
                    "webInteraction": {
-                       "URL": "https://experienceleague.adobe.com/docs/experience-platform/edge/data-collection/collect-commerce-data.html?lang=en",
+                       "URL": "https://experienceleague.adobe.com/docs/experience-platform/edge/data-collection/collect-commerce-data.html?lang=sv-SE",
                        "name": "Sample value",
                        "region": "Sample value"
                    },
                    "webPageDetails": {
-                       "URL": "https://experienceleague.adobe.com/docs/experience-platform/edge/data-collection/collect-commerce-data.html?lang=en",
+                       "URL": "https://experienceleague.adobe.com/docs/experience-platform/edge/data-collection/collect-commerce-data.html?lang=sv-SE",
                        "isErrorPage": false,
                        "isHomePage": false,
                        "name": "Sample value",
