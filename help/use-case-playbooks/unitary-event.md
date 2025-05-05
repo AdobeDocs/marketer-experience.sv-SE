@@ -34,7 +34,7 @@ ht-degree: 0%
 >[!TIP]
 >
 >Om du använder en terminal för att köra kurvorna kan du ange variabelvärden innan du kör kurvorna, så att du inte behöver ersätta dessa värden i enskilda kurvor.
->Om du till exempel anger `ORG_ID=************@AdobeOrg` ersätts alla förekomster av `$ORG_ID` automatiskt med värdet, så att du kan kopiera, klistra in och köra rullarna nedan utan att några ändringar görs.
+>Om du till exempel anger `ORG_ID=**&#x200B;**&#x200B;**&#x200B;**&#x200B;**&#x200B;**@AdobeOrg` ersätts alla förekomster av `$ORG_ID` automatiskt med värdet, så att du kan kopiera, klistra in och köra rullarna nedan utan att några ändringar görs.
 >
 > Följande variabler används i hela dokumentet
 >
